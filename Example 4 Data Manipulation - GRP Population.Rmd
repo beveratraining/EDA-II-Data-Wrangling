@@ -315,7 +315,7 @@ gapminder %>%
 ## keeping all data but "filtering" after a certain condition
 # calculate GDP only for people with a life expectation above 25
 gdp_pop_bycontinents_byyear_above25 <- gapminder %>% 
-    mutate(gdp_billion = ifelse(lifeExp > 25,     gdpPercap * pop / 10^9, NA)) %>%
+    mutate(gdp_billion = ifelse(lifeExp > 25, gdpPercap * pop / 10^9, NA)) %>%
     group_by(continent, year) %>%
     dplyr::summarize(mean_gdpPercap =  mean(gdpPercap),
               sd_gdpPercap = sd(gdpPercap),
@@ -323,6 +323,7 @@ gdp_pop_bycontinents_byyear_above25 <- gapminder %>%
               sd_pop = sd(pop),
               mean_gdp_billion = mean(gdp_billion),
               sd_gdp_billion = sd(gdp_billion))
+head(gdp_pop_bycontinents_byyear_above25)
 ```
 
 #summarise() has grouped output by continent. You can override using the ".groups" argument.
